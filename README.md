@@ -16,40 +16,42 @@ An [Agent Skill](https://agentskills.io) that turns any AI coding agent into a h
 
 This skill follows the open [Agent Skills](https://agentskills.io) specification and works across multiple AI coding agents.
 
-### Claude Code
+### Quick Install (any agent)
 
 ```bash
-npx @anthropic-ai/skills add github:knu2/moab-one-vibe-coder
+npx skills add knu2/moab-one-vibe-coder
 ```
 
-### GitHub Copilot (VS Code Agent Mode)
+The [`skills` CLI](https://www.npmjs.com/package/skills) auto-detects your installed agents (Claude Code, GitHub Copilot, Cursor, etc.) and places the skill in the correct directory. Use `-a <agent>` to target a specific agent, or `-g` for global install.
+
+### Manual Install
+
+If you prefer to install manually:
 
 ```bash
-# Option A: Use the skills CLI
-npx @anthropic-ai/skills add github:knu2/moab-one-vibe-coder
-
-# Option B: Manual install
 git clone https://github.com/knu2/moab-one-vibe-coder.git /tmp/moab-skill
+```
+
+Then copy the `moab-one-vibe-coder/` skill folder to your agent's skill directory:
+
+| Agent | Skill Directory |
+|-------|----------------|
+| Claude Code | `.claude/skills/` |
+| GitHub Copilot (VS Code) | `.agents/skills/` |
+| Cursor | `.cursor/skills/` |
+| Codex | `.agents/skills/` |
+| Gemini CLI | Copy to project root or agent config |
+
+```bash
+# Example for GitHub Copilot:
 cp -r /tmp/moab-skill/moab-one-vibe-coder .agents/skills/
 ```
 
-Then verify in VS Code: open Copilot Chat → Agent mode → type `/skills` → confirm `moab-one-vibe-coder` appears.
+### Verify Installation
 
-### Cursor
-
-```bash
-git clone https://github.com/knu2/moab-one-vibe-coder.git /tmp/moab-skill
-mkdir -p .cursor/skills
-cp -r /tmp/moab-skill/moab-one-vibe-coder .cursor/skills/
-```
-
-### Codex / Other Agents
-
-```bash
-# Clone and copy into your agent's skill directory
-git clone https://github.com/knu2/moab-one-vibe-coder.git /tmp/moab-skill
-cp -r /tmp/moab-skill/moab-one-vibe-coder <your-agent-skills-directory>/
-```
+- **GitHub Copilot:** Open Copilot Chat → Agent mode → type `/skills` → confirm `moab-one-vibe-coder` appears
+- **Claude Code:** Run `/skills` in the Claude Code terminal
+- **Cursor:** The skill activates automatically when you describe a hardware project
 
 ### Supported Agents
 
