@@ -14,18 +14,52 @@ An [Agent Skill](https://agentskills.io) that turns any AI coding agent into a h
 
 ## Install
 
+This skill follows the open [Agent Skills](https://agentskills.io) specification and works across multiple AI coding agents.
+
+### Claude Code
+
 ```bash
 npx @anthropic-ai/skills add github:knu2/moab-one-vibe-coder
+```
+
+### GitHub Copilot (VS Code Agent Mode)
+
+```bash
+# Option A: Use the skills CLI
+npx @anthropic-ai/skills add github:knu2/moab-one-vibe-coder
+
+# Option B: Manual install
+git clone https://github.com/knu2/moab-one-vibe-coder.git /tmp/moab-skill
+cp -r /tmp/moab-skill/moab-one-vibe-coder .agents/skills/
+```
+
+Then verify in VS Code: open Copilot Chat → Agent mode → type `/skills` → confirm `moab-one-vibe-coder` appears.
+
+### Cursor
+
+```bash
+git clone https://github.com/knu2/moab-one-vibe-coder.git /tmp/moab-skill
+mkdir -p .cursor/skills
+cp -r /tmp/moab-skill/moab-one-vibe-coder .cursor/skills/
+```
+
+### Codex / Other Agents
+
+```bash
+# Clone and copy into your agent's skill directory
+git clone https://github.com/knu2/moab-one-vibe-coder.git /tmp/moab-skill
+cp -r /tmp/moab-skill/moab-one-vibe-coder <your-agent-skills-directory>/
 ```
 
 ### Supported Agents
 
 This skill works with any agent that supports the [Agent Skills](https://agentskills.io) specification:
-- GitHub Copilot (VS Code)
 - Claude Code
+- GitHub Copilot (VS Code)
 - Cursor
 - Codex
-- And more
+- Gemini CLI
+- Any agent that reads SKILL.md files
 
 ## Usage
 
